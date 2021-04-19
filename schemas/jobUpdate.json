@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://our.company.com/jobUpdate.schema.json",
+    "type": "object",
+    "required": [],
+    "properties": {
+        "title": {
+            "type": "string"
+        },
+        "salary": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "equity": {
+            "maximum": 1.0,
+            "type": "number"
+        }
+    }
+}
