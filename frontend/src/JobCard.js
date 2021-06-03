@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { Button, Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import JoblyApi from './api'
 import UserContext from './UserContext'
 
@@ -22,7 +21,7 @@ export default function JobCard({ job }) {
     }
 
     return (
-        <Card>
+        <Card key={job.id}>
             <Card.Body>
                 <Card.Title>{job.title}</Card.Title>
                 <p>Salary: <span>{job.salary}</span></p>

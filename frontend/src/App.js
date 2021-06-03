@@ -26,11 +26,9 @@ function App() {
 
     async function getCurrentUser() {
       if (token) {
-        console.log(jwt.decode(token))
         try {
           let username = jwt.decode(token).username
           let user = await JoblyApi.getCurrentUser(username)
-          console.log(user)
           setcurrentUser(user)
         } catch (error) {
           console.error("App loadUserInfo: problem loading", error)

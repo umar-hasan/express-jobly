@@ -71,3 +71,8 @@
   text-align: left;
   font-weight: 700;
 }
+
+/* Search */
+#search-form {
+  display: flex;
+}

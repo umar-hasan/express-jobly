@@ -1,24 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import JoblyApi from './api'
 import JobCard from './JobCard'
-import UserContext from './UserContext'
+import Search from './Search'
 
 
 export default function JobList() {
     const [jobs, setjobs] = useState([])
 
-    const {currentUser} = useContext(UserContext)
+    useEffect(() => { }, [])
 
-    useEffect(() => {
-        const getJobs = async () => {
-            let res = await JoblyApi.getAllJobs()
-            setjobs(res)
-        }
-        getJobs()
-    }, [])
+    const getJobs = async (q = "") => {
+        let res = await JoblyApi.getAllJobs(q)
+        setjobs(res)
+    }
 
     return (
         <div className="col-md-8 offset-md-2">
+            <Search search={getJobs} />
             {jobs.map((j) => {
                 return <JobCard job={j} />
             })}

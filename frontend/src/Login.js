@@ -12,13 +12,19 @@ export default function Login({ login }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        let result = await login(formData)
-        if (result) {
-            history.push("/")
-        }
-        else {
+        try {
+            let result = await login(formData)
+            if (result.success) {
+                history.push("/")
+            }
+            else {
+                throw new Error("login failed")
+            }
 
+        } catch (error) {
+            console.error(error)
         }
+
     }
 
     const handleChange = (e) => {
