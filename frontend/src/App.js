@@ -87,11 +87,11 @@ function App() {
           <Navigation logout={logout} />
           <Switch>
 
-            <Route path="/login">
+            <Route exact path="/login">
               <Login login={login} />
             </Route>
 
-            <Route path="/signup">
+            <Route exact path="/signup">
               <Register register={register} />
             </Route>
 
@@ -111,12 +111,12 @@ function App() {
               <JobList />
             </ProtectedRoute>
 
-            <Route path="/">
+            <Route exact path="/">
               <Home />
             </Route>
 
             <Route>
-              <p>404 Page</p>
+              404 Page
             </Route>
 
           </Switch>

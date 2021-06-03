@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import { useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import JoblyApi from './api'
@@ -10,6 +9,10 @@ export default function JobCard({ job }) {
     const {currentUser} = useContext(UserContext)
 
     const [applied, setapplied] = useState(currentUser.applications.includes(job.id))
+
+    useEffect(() => {
+        setapplied(currentUser.applications.includes(job.id))
+    }, [currentUser.applications])
 
     async function apply(id) {
         let res = await JoblyApi.applyToJob(currentUser.username, id)

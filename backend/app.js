@@ -23,12 +23,14 @@ app.use(express.json());
 app.use(morgan("tiny"));
 app.use(authenticateJWT);
 
-app.use("/auth", authRoutes);
-app.use("/companies", companiesRoutes);
-app.use("/users", usersRoutes);
-app.use("/jobs", jobsRoutes);
-
 app.use(express.static(path.join(__dirname, "../frontend/build")))
+
+app.use("/api/auth", authRoutes);
+app.use("/api/companies", companiesRoutes);
+app.use("/api/users", usersRoutes);
+app.use("/api/jobs", jobsRoutes);
+
+
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/../frontend/build/index.html'))
@@ -49,6 +51,7 @@ app.use(function (err, req, res, next) {
     error: { message, status },
   });
 });
+
 
 
 module.exports = app;
