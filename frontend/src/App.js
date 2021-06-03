@@ -115,6 +115,10 @@ function App() {
               <Home />
             </Route>
 
+            <Route>
+              <p>404 Page</p>
+            </Route>
+
           </Switch>
         </Router>
       </UserContext.Provider>
